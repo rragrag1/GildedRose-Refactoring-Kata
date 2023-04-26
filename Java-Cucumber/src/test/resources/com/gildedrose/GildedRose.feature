@@ -51,3 +51,28 @@ Feature: Gilded Rose quality
     Given The item as "foo" to Sell In 0 days and 20 Quality
     When I update the quality
     Then I should get item as "foo" to Sell In -1 days and 18 Quality
+
+
+
+
+  Scenario: Checking Conjured items 1
+    Given The item as "Conjured" to Sell In 10 days and 40 Quality
+    When I update the quality
+    Then I should get item as "Conjured" to Sell In 9 days and 38 Quality
+
+  Scenario: Checking Conjured items 2
+    Given The item as "Conjured" to Sell In 10 days and 1 Quality
+    When I update the quality
+    Then I should get item as "Conjured" to Sell In 9 days and 0 Quality
+
+
+  Scenario: Checking Conjured items 3
+    Given The item as "Conjured" to Sell In 0 days and 2 Quality
+    When I update the quality
+    Then I should get item as "Conjured" to Sell In -1 days and 0 Quality
+
+
+  Scenario: Checking Conjured items 4
+    Given The item as "Conjured" to Sell In 0 days and 10 Quality
+    When I update the quality
+    Then I should get item as "Conjured" to Sell In -1 days and 6 Quality

@@ -14,71 +14,66 @@ class GildedRose {
     public void updateQuality() {
         for (Item item : items) {
             if (item.name.equals(AGED_BRIE)) {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
-                item.sellIn = item.sellIn - 1;
-                if (item.sellIn < 0) {
-                    if (item.quality < 50) {
-                        item.quality = item.quality + 1;
-                    }
+                increaseQuality(item);
+                updateExpiration(item);
+                if (isExpired(item)) {
+                    increaseQuality(item);
                 }
             }
 
             else if (item.name.equals(BACKSTAGE)) {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-
-                    if (item.sellIn < 11) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
-                        }
+                increaseQuality(item);
+                if (item.sellIn < 11) {
+                        increaseQuality(item);
                     }
-
                     if (item.sellIn < 6) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
-                        }
+                        increaseQuality(item);
                     }
-                }
-                if (item.sellIn < 0) {
+                if (isExpired(item)) {
                     item.quality = 0;
                 }
-                item.sellIn = item.sellIn - 1;
-
+                updateExpiration(item);
             }
 
             else if (item.name.equals(SULFURAS)) {
             }
             else if (item.name.equals(CONJURED)){
-                item.sellIn = item.sellIn - 1;
+                updateExpiration(item);
                 if (item.quality > 0) {
                     item.quality = item.quality - 1;
-                    if (item.quality > 0) {
-                        item.quality = item.quality - 1;
-                    }
+                    decreaseQuality(item);
                 }
-                if (item.sellIn < 0) {
-                    if (item.quality > 0) {
-                        item.quality = item.quality - 1;
-                    }
-                    if (item.quality > 0) {
-                        item.quality = item.quality - 1;
-                    }
+                if (isExpired(item)) {
+                    decreaseQuality(item);
+                    decreaseQuality(item);
                 }
             }
             else {
-                item.sellIn = item.sellIn - 1;
-                if (item.quality > 0) {
-                    item.quality = item.quality - 1;
-                }
-                if (item.sellIn < 0) {
-                    if (item.quality > 0) {
-                        item.quality = item.quality - 1;
-                    }
+                updateExpiration(item);
+                decreaseQuality(item);
+                if (isExpired(item)) {
+                    decreaseQuality(item);
                 }
             }
 
+        }
+    }
+    private void updateExpiration(Item item) {
+        if (!item.name.equals(SULFURAS)) {
+            item.sellIn --;
+        }
+    }
+    private boolean isExpired(Item item) {
+        return item.sellIn < 0;
+    }
+    private void decreaseQuality(Item item) {
+        if (item.quality > 0) {
+            item.quality --;
+        }
+    }
+    private void increaseQuality(Item item) {
+        if (item.quality < 50) {
+            item.quality ++;
         }
     }
 }

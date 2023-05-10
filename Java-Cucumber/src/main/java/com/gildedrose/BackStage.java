@@ -1,6 +1,8 @@
 package com.gildedrose;
 
 public class BackStage extends GildedRoseItem {
+    public static final String LABEL = "Backstage passes to a TAFKAL80ETC concert";
+
     public BackStage(Item item) {
         super(item);
     }

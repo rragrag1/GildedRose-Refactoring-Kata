@@ -2,28 +2,25 @@ package com.gildedrose;
 
 public class GildedRoseItem {
     protected final Item item;
-    public static final String AGED_BRIE = "Aged Brie";
-    public static final String BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
-    public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
-    public static final String CONJURED = "Conjured";
+
     public GildedRoseItem(Item item) {
         this.item = item;
     }
     public GildedRoseItem create() {
 
-        if (item.name.equals(AGED_BRIE)) {
+        if (item.name.equals(AgedBrie.LABEL)) {
             return new AgedBrie(item);
         }
 
-        if (item.name.equals(BACKSTAGE)) {
+        if (item.name.equals(BackStage.LABEL)) {
             return new BackStage(item);
         }
 
-        if (item.name.equals(SULFURAS)) {
+        if (item.name.equals(Sulfuras.LABEL)) {
             return new Sulfuras(item);
         }
 
-        if (item.name.equals(CONJURED)) {
+        if (item.name.equals(Conjured.LABEL)) {
             return new Conjured(item);
         }
         return new GildedRoseItem(item);

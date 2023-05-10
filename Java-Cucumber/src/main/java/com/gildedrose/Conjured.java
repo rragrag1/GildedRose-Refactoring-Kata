@@ -1,6 +1,8 @@
 package com.gildedrose;
 
 public class Conjured extends GildedRoseItem {
+    public static final String LABEL = "Conjured";
+
     public Conjured(Item item) {
         super(item);
     }

@@ -4,13 +4,14 @@ public class AgedBrie extends GildedRoseItem {
     public AgedBrie(Item item) {
         super(item);
     }
-
     @Override
-    public void updateQuality() {
+    protected void handleQuality() {
         increaseQuality();
-        updateExpiration();
-        if (isExpired()) {
-            increaseQuality();
-        }
     }
+    @Override
+    protected void handleExpiration() {
+        increaseQuality();
+    }
+
+
 }

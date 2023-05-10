@@ -4,8 +4,9 @@ public class BackStage extends GildedRoseItem {
     public BackStage(Item item) {
         super(item);
     }
+
     @Override
-    public void updateQuality() {
+    protected void handleQuality() {
         increaseQuality();
         if (item.sellIn < 11) {
             increaseQuality();
@@ -13,10 +14,10 @@ public class BackStage extends GildedRoseItem {
         if (item.sellIn < 6) {
             increaseQuality();
         }
-        if (isExpired()) {
-            item.quality = 0;
-        }
-        updateExpiration();
+    }
+    @Override
+    protected void handleExpiration() {
+        item.quality = 0;
     }
 
 }

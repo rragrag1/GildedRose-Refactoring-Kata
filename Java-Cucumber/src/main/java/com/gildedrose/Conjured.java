@@ -5,16 +5,7 @@ public class Conjured extends GildedRoseItem {
         super(item);
     }
     @Override
-    public void updateQuality() {
-        updateExpiration();
-        if (item.quality > 0) {
-            item.quality = item.quality - 1;
-            decreaseQuality();
-        }
-        if (isExpired()) {
-            decreaseQuality();
-            decreaseQuality();
-        }
+    protected void decreaseQuality() {
+        item.quality = (item.quality > 1) ?  item.quality -2 : 0;
     }
-
 }

@@ -30,16 +30,20 @@ public class GildedRoseItem {
     }
 
     public void updateQuality() {
+        handleQuality();
         updateExpiration();
-        decreaseQuality();
         if (isExpired()) {
-            decreaseQuality();
+            handleExpiration();
         }
     }
+    protected void handleQuality() {
+        decreaseQuality();
+    }
+    protected void handleExpiration() {
+        decreaseQuality();
+    }
     protected void updateExpiration() {
-          if (!item.name.equals(SULFURAS)) {
             item.sellIn --;
-        }
     }
     protected boolean isExpired() {
         return item.sellIn < 0;
@@ -54,6 +58,4 @@ public class GildedRoseItem {
             item.quality ++;
         }
     }
-
-
 }

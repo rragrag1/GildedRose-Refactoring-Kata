@@ -5,8 +5,5 @@ public class Sulfuras extends GildedRoseItem {
         super(item);
     }
     @Override
-    public void updateQuality() {
-
-    }
-
+    public void updateQuality() { }
 }
